@@ -1,16 +1,17 @@
-import * as BABYLON from '@babylonjs/core';
+import * as BABYLON from "@babylonjs/core";
 
+// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 class Playground {
   public static CreateScene(
     engine: BABYLON.Engine,
     canvas: HTMLCanvasElement
   ): BABYLON.Scene {
     // This creates a basic Babylon Scene object (non-mesh)
-    var scene = new BABYLON.Scene(engine);
+    const scene = new BABYLON.Scene(engine);
 
     // This creates and positions a free camera (non-mesh)
-    var camera = new BABYLON.FreeCamera(
-      'camera1',
+    const camera = new BABYLON.FreeCamera(
+      "camera1",
       new BABYLON.Vector3(0, 5, -10),
       scene
     );
@@ -22,8 +23,8 @@ class Playground {
     camera.attachControl(canvas, true);
 
     // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
-    var light = new BABYLON.HemisphericLight(
-      'light1',
+    const light = new BABYLON.HemisphericLight(
+      "light1",
       new BABYLON.Vector3(0, 1, 0),
       scene
     );
@@ -32,8 +33,8 @@ class Playground {
     light.intensity = 0.7;
 
     // Our built-in 'sphere' shape. Params: name, options, scene
-    var sphere = BABYLON.MeshBuilder.CreateSphere(
-      'sphere',
+    const sphere = BABYLON.MeshBuilder.CreateSphere(
+      "sphere",
       { diameter: 2, segments: 32 },
       scene
     );
@@ -42,8 +43,8 @@ class Playground {
     sphere.position.y = 1;
 
     // Our built-in 'ground' shape. Params: name, options, scene
-    var ground = BABYLON.MeshBuilder.CreateGround(
-      'ground',
+    const ground = BABYLON.MeshBuilder.CreateGround(
+      "ground",
       { width: 6, height: 6 },
       scene
     );

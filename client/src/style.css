@@ -9,3 +9,9 @@ body,
   outline: none !important;
   display: block;
 }
+#myButton {
+  position: absolute;
+  top: 20px; /* 任意の位置を設定 */
+  left: 20px; /* 任意の位置を設定 */
+  z-index: 1;
+}
