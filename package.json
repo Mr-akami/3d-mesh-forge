@@ -1,0 +1,10 @@
+{
+  "name": "3d-mesh-forge",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter backend dev\" \"pnpm --filter client dev\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
