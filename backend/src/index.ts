@@ -9,9 +9,10 @@ app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
-app.post("/post", (c) => {
-  console.log(c.body);
-  return c.json({ message: "Hello Hono!", body: c.body });
+app.post("/post", async (c) => {
+  const a = await c.req.json();
+  console.log(a);
+  return c.json({ message: "Hello Hono!", body: a });
 });
 
 const port = 3000;
