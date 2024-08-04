@@ -1,3 +1,4 @@
+import { customMeshRawData } from "./mesh-data";
 const button = document.getElementById("myButton");
 
 if (button) {
@@ -6,9 +7,11 @@ if (button) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    const { positions, indices, normals } = customMeshRawData;
+
     const response = await fetch("http://localhost:3000/post", {
       method: "POST",
-      body: JSON.stringify({ username: "example" }),
+      body: JSON.stringify({ positions, indices, normals }),
       headers: myHeaders,
     });
     if (!response.ok) {

@@ -1,4 +1,5 @@
 import * as BABYLON from "@babylonjs/core";
+import { customMeshRawData } from "./mesh-data";
 
 // biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 class Playground {
@@ -10,9 +11,18 @@ class Playground {
     const scene = new BABYLON.Scene(engine);
 
     // This creates and positions a free camera (non-mesh)
-    const camera = new BABYLON.FreeCamera(
-      "camera1",
-      new BABYLON.Vector3(0, 5, -10),
+    // const camera = new BABYLON.FreeCamera(
+    //   "camera1",
+    //   new BABYLON.Vector3(0, 5, -10),
+    //   scene
+    // );
+
+    const camera = new BABYLON.ArcRotateCamera(
+      "camera",
+      Math.PI / 2,
+      Math.PI / 4,
+      10,
+      BABYLON.Vector3.Zero(),
       scene
     );
 
@@ -32,22 +42,36 @@ class Playground {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    // Our built-in 'sphere' shape. Params: name, options, scene
-    const sphere = BABYLON.MeshBuilder.CreateSphere(
-      "sphere",
-      { diameter: 2, segments: 32 },
-      scene
-    );
+    // // Our built-in 'sphere' shape. Params: name, options, scene
+    // const sphere = BABYLON.MeshBuilder.CreateSphere(
+    //   "sphere",
+    //   { diameter: 2, segments: 32 },
+    //   scene
+    // );
 
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 1;
+    // // // Move the sphere upward 1/2 its height
+    // sphere.position.y = 1;
+
+    const axes = new BABYLON.AxesViewer(scene, 1);
+
+    const { positions, indices, normals } = customMeshRawData;
+
+    // box geometryを作成
+    const boxGeometry = new BABYLON.Geometry("boxGeometry", scene);
+    boxGeometry.setVerticesData(BABYLON.VertexBuffer.PositionKind, positions);
+    boxGeometry.setIndices(indices);
+    boxGeometry.setVerticesData(BABYLON.VertexBuffer.NormalKind, normals);
+
+    // メッシュを作成してGeometryを適用
+    const box = new BABYLON.Mesh("box", scene);
+    boxGeometry.applyToMesh(box);
 
     // Our built-in 'ground' shape. Params: name, options, scene
-    const ground = BABYLON.MeshBuilder.CreateGround(
-      "ground",
-      { width: 6, height: 6 },
-      scene
-    );
+    // const ground = BABYLON.MeshBuilder.CreateGround(
+    //   "ground",
+    //   { width: 6, height: 6 },
+    //   scene
+    // );
 
     return scene;
   }
