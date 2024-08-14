@@ -4,6 +4,8 @@
 
 - `cd backend/external/blender-script` and `. .venv/bin/activate` : activate python venv
 - `pnpm dev` : start frontend and backend.
+- `uv run ruff check --fix`: python lint check
+- `uv run ruff format`: python format
 
 ## History
 
