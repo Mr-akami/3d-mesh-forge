@@ -7,10 +7,17 @@ settings:
 importers:
 
   .:
+    dependencies:
+      tweakpane:
+        specifier: ^4.0.4
+        version: 4.0.4
     devDependencies:
       '@babylonjs/core':
         specifier: ^7.18.0
         version: 7.18.0
+      '@tweakpane/core':
+        specifier: ^2.0.4
+        version: 2.0.4
       typescript:
         specifier: ^5.2.2
         version: 5.5.4
@@ -241,6 +248,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@tweakpane/core@2.0.4':
+    resolution: {integrity: sha512-0P3xcmvjBr8AmqMOEDNYIbkiaPwvQPkj8VeJX+8ZYkpRgWWbNp1HLbld0MDI0WJHdom89osH3MmCDLnWEXKI2w==}
+
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
@@ -274,6 +284,9 @@ packages:
   source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
+
+  tweakpane@4.0.4:
+    resolution: {integrity: sha512-RkWD54zDlEbnN01wQPk0ANHGbdCvlJx/E8A1QxhTfCbX+ROWos1Ws2MnhOm39aUGMOh+36TjUwpDmLfmwTr1Fg==}
 
   typescript@5.5.4:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
@@ -429,6 +442,8 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.19.2':
     optional: true
 
+  '@tweakpane/core@2.0.4': {}
+
   '@types/estree@1.0.5': {}
 
   esbuild@0.21.5:
@@ -493,6 +508,8 @@ snapshots:
       fsevents: 2.3.3
 
   source-map-js@1.2.0: {}
+
+  tweakpane@4.0.4: {}
 
   typescript@5.5.4: {}
 

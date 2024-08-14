@@ -11,6 +11,9 @@ importers:
       concurrently:
         specifier: ^7.6.0
         version: 7.6.0
+      tweakpane:
+        specifier: ^4.0.4
+        version: 4.0.4
 
 packages:
 
@@ -110,6 +113,9 @@ packages:
 
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
+
+  tweakpane@4.0.4:
+    resolution: {integrity: sha512-RkWD54zDlEbnN01wQPk0ANHGbdCvlJx/E8A1QxhTfCbX+ROWos1Ws2MnhOm39aUGMOh+36TjUwpDmLfmwTr1Fg==}
 
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
@@ -217,6 +223,8 @@ snapshots:
   tree-kill@1.2.2: {}
 
   tslib@2.6.3: {}
+
+  tweakpane@4.0.4: {}
 
   wrap-ansi@7.0.0:
     dependencies:

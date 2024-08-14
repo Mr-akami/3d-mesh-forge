@@ -2,11 +2,15 @@ import { Playground } from "./createScene";
 import "./style.css";
 import { Engine } from "@babylonjs/core";
 import "./button";
+import { describeTweakpane } from "./tweakpane";
 
 const main = () => {
+  // ignore prettier
+  describeTweakpane();
+
   const renderCanvas = document.querySelector(
     "#renderCanvas"
-  ) as HTMLCanvasElement;
+  ) as unknown as HTMLCanvasElement;
   if (!renderCanvas) {
     return;
   }
