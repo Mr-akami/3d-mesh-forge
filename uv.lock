@@ -1,0 +1,16 @@
+version = 1
+requires-python = ">=3.7"
+
+[[package]]
+name = "3d-mesh-forge"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "blender" },
+]
+
+[[package]]
+name = "blender"
+version = "1.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b9/ac/31d3d2a51a4db8b0df7900978a50a88664054b3d9b07e8a909e282b150e6/blender-1.4.tar.gz", hash = "sha256:ddad81081e4e4d14e91cf49886028a96d620f0ebc514dc82f51774ec42117de9", size = 24680401 }

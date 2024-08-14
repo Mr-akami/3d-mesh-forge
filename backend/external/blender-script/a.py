@@ -1,4 +1,5 @@
 import bpy
+
 print("Hello from Blender")
 
 
@@ -14,7 +15,7 @@ def test_bpy():
             print("bpy is working correctly. New scene created successfully.")
         else:
             print("bpy imported, but scene creation failed.")
-        
+
         # テストが終わったのでシーンを削除
         bpy.data.scenes.remove(scene)
     except Exception as e:
