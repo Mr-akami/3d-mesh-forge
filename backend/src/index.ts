@@ -1,6 +1,8 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { runBlenderScript } from "../external/blender-script/blender-script-adapter";
+import { run } from "node:test";
 
 const app = new Hono();
 app.use("/*", cors());
@@ -12,6 +14,8 @@ app.get("/", (c) => {
 app.post("/post", async (c) => {
   const a = await c.req.json();
   console.log(a);
+  runBlenderScript("a.py");
+
   return c.json({ message: "Hello Hono!", body: a });
 });
 

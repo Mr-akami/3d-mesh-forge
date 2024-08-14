@@ -1,6 +1,8 @@
 import * as BABYLON from "@babylonjs/core";
 import { customMeshRawData } from "./mesh-data";
 
+export let boxOBject = {};
+
 // biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 class Playground {
   public static CreateScene(
@@ -54,17 +56,29 @@ class Playground {
 
     const axes = new BABYLON.AxesViewer(scene, 1);
 
-    const { positions, indices, normals } = customMeshRawData;
+    // draw a custom mesh
+    // const { positions, indices, normals } = customMeshRawData;
+    // // box geometryを作成
+    // const boxGeometry = new BABYLON.Geometry("boxGeometry", scene);
+    // boxGeometry.setVerticesData(BABYLON.VertexBuffer.PositionKind, positions);
+    // boxGeometry.setIndices(indices);
+    // boxGeometry.setVerticesData(BABYLON.VertexBuffer.NormalKind, normals);
+    // // メッシュを作成してGeometryを適用
+    // const box = new BABYLON.Mesh("box", scene);
+    // boxGeometry.applyToMesh(box);
 
-    // box geometryを作成
-    const boxGeometry = new BABYLON.Geometry("boxGeometry", scene);
-    boxGeometry.setVerticesData(BABYLON.VertexBuffer.PositionKind, positions);
-    boxGeometry.setIndices(indices);
-    boxGeometry.setVerticesData(BABYLON.VertexBuffer.NormalKind, normals);
-
-    // メッシュを作成してGeometryを適用
-    const box = new BABYLON.Mesh("box", scene);
-    boxGeometry.applyToMesh(box);
+    const box = BABYLON.MeshBuilder.CreateBox("box", { size: 1 }, scene);
+    const positions = box.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+    const indices = box.getIndices();
+    const normals = box.getVerticesData(BABYLON.VertexBuffer.NormalKind);
+    const uvs = box.getVerticesData(BABYLON.VertexBuffer.UVKind);
+    boxOBject = {
+      box,
+      positions,
+      indices,
+      normals,
+      uvs,
+    };
 
     // Our built-in 'ground' shape. Params: name, options, scene
     // const ground = BABYLON.MeshBuilder.CreateGround(

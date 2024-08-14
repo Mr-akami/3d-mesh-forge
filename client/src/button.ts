@@ -1,4 +1,5 @@
 import { customMeshRawData } from "./mesh-data";
+import { boxOBject } from "./createScene";
 const button = document.getElementById("myButton");
 
 if (button) {
@@ -7,7 +8,8 @@ if (button) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const { positions, indices, normals } = customMeshRawData;
+    // const { positions, indices, normals } = customMeshRawData;
+    const { positions, indices, normals } = boxOBject;
 
     const response = await fetch("http://localhost:3000/post", {
       method: "POST",
