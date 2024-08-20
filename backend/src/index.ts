@@ -4,6 +4,12 @@ import { cors } from "hono/cors";
 import { runBlenderScript } from "../external/blender-script/blender-script-adapter";
 import { run } from "node:test";
 
+type BlenderResult = {
+  positions: number[];
+  indices: number[];
+  normals: number[];
+};
+
 const app = new Hono();
 app.use("/*", cors());
 app.get("/", (c) => {
@@ -12,14 +18,20 @@ app.get("/", (c) => {
 });
 
 app.post("/post", async (c) => {
-  const a = await c.req.json();
-  console.log(a);
+  const params = await c.req.json();
+  const { positions, indices, normals } = params;
+  console.log(positions, indices, normals);
   const data = {
-    nums: [1, 2, 3],
+    positions,
+    indices,
+    normals,
   };
-  runBlenderScript("a.py", data);
+  const result = await runBlenderScript<BlenderResult>("a.py", data);
+  console.log("Positions:", result.positions);
+  console.log("Indices:", result.indices);
+  console.log("Normals:", result.normals);
 
-  return c.json({ message: "Hello Hono!", body: a });
+  return c.json({ message: "Hello Hono!", body: result });
 });
 
 const port = 3000;

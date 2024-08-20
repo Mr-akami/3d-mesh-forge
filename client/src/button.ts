@@ -1,5 +1,13 @@
 import { customMeshRawData } from "./mesh-data";
 import { boxOBject } from "./createScene";
+import {
+  store,
+  positionsAtom,
+  indicesAtom,
+  normalsAtom,
+  updateTriggerAtom,
+} from "./store/store";
+
 const button = document.getElementById("myButton");
 
 if (button) {
@@ -19,6 +27,18 @@ if (button) {
     if (!response.ok) {
       throw new Error(`レスポンスステータス: ${response.status}`);
     }
-    console.log(await response.json());
+    const data = await response.json();
+    console.log("client response");
+    console.log(data.body.positions);
+    store.set(positionsAtom, data.body.positions);
+    store.set(indicesAtom, data.body.indices);
+    store.set(normalsAtom, data.body.normals);
+
+    const p = store.get(positionsAtom);
+    const i = store.get(indicesAtom);
+    const n = store.get(normalsAtom);
+    console.log(p, i, n);
+
+    store.set(updateTriggerAtom, (s) => s + 1);
   });
 }
