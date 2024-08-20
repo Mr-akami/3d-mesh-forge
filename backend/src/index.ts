@@ -14,7 +14,10 @@ app.get("/", (c) => {
 app.post("/post", async (c) => {
   const a = await c.req.json();
   console.log(a);
-  runBlenderScript("a.py");
+  const data = {
+    nums: [1, 2, 3],
+  };
+  runBlenderScript("a.py", data);
 
   return c.json({ message: "Hello Hono!", body: a });
 });

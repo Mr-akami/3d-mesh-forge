@@ -1,9 +1,17 @@
 import bpy
+import sys
+import json
 
 print("Hello from Blender")
 
+input_data = sys.stdin.read()
+
+data = json.loads(input_data)
+
 
 def test_bpy():
+    nums = data["nums"]
+    print(f"nums: {nums}")
     try:
         # 新しいシーンを作成
         scene = bpy.data.scenes.new(name="TestScene")
